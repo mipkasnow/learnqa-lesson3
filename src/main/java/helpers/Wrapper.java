@@ -1,15 +1,24 @@
 package helpers;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Wrapper {
 
     public static SelenideElement elementById(String id) {
         return $(By.id("org.wikipedia:id/" + id));
+    }
+
+    public static SelenideElement elementByAccessibilityId(String id) {
+        return $(AppiumBy.accessibilityId(id));
+    }
+
+    public static ElementsCollection elementsById(String id) {
+        return $$(By.id("org.wikipedia:id/" + id));
     }
 
     public static SelenideElement elementByXpathTextContains(String text) {
