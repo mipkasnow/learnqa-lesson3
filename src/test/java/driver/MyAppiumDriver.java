@@ -36,6 +36,7 @@ public class MyAppiumDriver implements WebDriverProvider {
         options.setApp(app.getAbsolutePath());
         options.setAppPackage("org.wikipedia");
         options.setAppActivity(".main.MainActivity");
+        options.setNoReset(true);
 
         driver = new AndroidDriver(getAppiumServerUrl(), options);
         return driver;

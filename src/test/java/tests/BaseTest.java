@@ -15,7 +15,7 @@ public class BaseTest extends MyAppiumDriver {
     public static void setUp() {
         Configuration.browser = MyAppiumDriver.class.getName();
         Configuration.browserSize = null;
-        Configuration.timeout = 12000;
+        Configuration.timeout = 7000;
     }
 
     @BeforeEach
