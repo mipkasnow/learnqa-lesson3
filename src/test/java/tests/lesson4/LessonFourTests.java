@@ -6,8 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import tests.BaseTest;
 
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.attribute;
+import static com.codeborne.selenide.Condition.*;
 import static helpers.Wrapper.*;
 
 public class LessonFourTests extends BaseTest {
@@ -65,5 +64,18 @@ public class LessonFourTests extends BaseTest {
         elementByXpathTextContains(titleTwo).click();
         elementByXpath("//*[@resource-id='org.wikipedia:id/page_contents_container']//*[@text='" + titleTwo + "']")
                 .should(appear);
+    }
+
+    @Test
+    public void secondTest(){
+        var searchTextOne = "Java";
+        var titleOne = "Java (programming language)";
+        var articleTitleLocator = elementByXpath("//*[@resource-id='pcs-edit-section-title-description']/preceding-sibling::android.view.View");
+
+        searchField.click();
+        searchInput.sendKeys(searchTextOne);
+        elementByXpathTextContains(titleOne).click();
+
+        articleTitleLocator.shouldHave(text(titleOne));
     }
 }
