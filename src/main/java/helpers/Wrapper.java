@@ -9,8 +9,12 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Wrapper {
 
-    public static SelenideElement elementById(String id) {
+    public static SelenideElement elementByIdWiki(String id) {
         return $(By.id("org.wikipedia:id/" + id));
+    }
+
+    public static SelenideElement elementById(String id) {
+        return $(By.id(id));
     }
 
     public static SelenideElement elementByAccessibilityId(String id) {

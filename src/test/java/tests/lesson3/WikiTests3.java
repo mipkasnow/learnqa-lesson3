@@ -10,7 +10,7 @@ import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 
-public class WikiTests extends BaseTest {
+public class WikiTests3 extends BaseTest {
 
     private final AssertElement assertElement = new AssertElement();
 
@@ -22,17 +22,17 @@ public class WikiTests extends BaseTest {
     @Test
     public void searchResults(){
         Wrapper.elementByXpathTextContains("Search Wikipedia").click();
-        Wrapper.elementById("search_src_text").sendKeys("Warhammer");
+        Wrapper.elementByIdWiki("search_src_text").sendKeys("Warhammer");
         Wrapper.elementsById("page_list_item_title").shouldHave(sizeGreaterThan(1));
         Wrapper.elementByAccessibilityId("Clear query").click();
-        Wrapper.elementById("page_list_item_title").shouldNotBe(visible);
+        Wrapper.elementByIdWiki("page_list_item_title").shouldNotBe(visible);
     }
 
     @Test
     public void checkThatEverySearchResultContainsWordJava(){
         var searchText = "Java";
         Wrapper.elementByXpathTextContains("Search Wikipedia").click();
-        Wrapper.elementById("search_src_text").sendKeys(searchText);
+        Wrapper.elementByIdWiki("search_src_text").sendKeys(searchText);
 
         var titles = Wrapper.elementsById("page_list_item_title").shouldHave(sizeGreaterThan(1));
 
