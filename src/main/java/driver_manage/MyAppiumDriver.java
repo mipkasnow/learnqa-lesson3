@@ -1,4 +1,4 @@
-package driver;
+package driver_manage;
 
 import com.codeborne.selenide.WebDriverProvider;
 import io.appium.java_client.android.AndroidDriver;
@@ -11,9 +11,9 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class MyAppiumDriver implements WebDriverProvider {
+import static driver_manage.DriverStaticContainer.driver;
 
-    public static AndroidDriver driver;
+public class MyAppiumDriver implements WebDriverProvider {
 
     public static URL getAppiumServerUrl() {
         try {
@@ -38,7 +38,7 @@ public class MyAppiumDriver implements WebDriverProvider {
         options.setAppActivity(".main.MainActivity");
         options.setNoReset(true);
 
-        driver = new AndroidDriver(getAppiumServerUrl(), options);
+        DriverStaticContainer.driver = new AndroidDriver(getAppiumServerUrl(), options);
         return driver;
     }
 

@@ -1,9 +1,10 @@
-package tests;
+package tests.lesson3;
 
 import helpers.AssertElement;
 import helpers.Wrapper;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import tests.BaseTest;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
