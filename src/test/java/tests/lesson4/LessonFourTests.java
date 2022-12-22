@@ -6,8 +6,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import tests.BaseTest;
 
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.appear;
+import static com.codeborne.selenide.Condition.attribute;
 import static helpers.Wrapper.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LessonFourTests extends BaseTest {
 
@@ -19,12 +21,12 @@ public class LessonFourTests extends BaseTest {
     private final SelenideElement saveArticleButton = elementByAccessibilityId("Save");
     private final SelenideElement addToListButton = elementByXpathTextContains("ADD TO LIST");
     private final SelenideElement nameOfTheListInput = elementByIdWiki("text_input");
-    private final SelenideElement okButton =  elementByXpathTextContains("OK");
+    private final SelenideElement okButton = elementByXpathTextContains("OK");
     private final SelenideElement viewListButton = elementByXpathTextContains("VIEW LIST");
     private final SelenideElement backButton = elementByAccessibilityId("Navigate up");
 
     @BeforeEach
-    public void skipFirstPage(){
+    public void skipFirstPage() {
         skipButton.click();
     }
 
@@ -67,7 +69,7 @@ public class LessonFourTests extends BaseTest {
     }
 
     @Test
-    public void secondTest(){
+    public void secondTest() {
         var searchTextOne = "Java";
         var titleOne = "Java (programming language)";
         var articleTitleLocator = elementByXpath("//*[@resource-id='pcs-edit-section-title-description']/preceding-sibling::android.view.View");
@@ -76,6 +78,12 @@ public class LessonFourTests extends BaseTest {
         searchInput.sendKeys(searchTextOne);
         elementByXpathTextContains(titleOne).click();
 
-        articleTitleLocator.shouldHave(text(titleOne));
+        assertElementPresent(articleTitleLocator);
+    }
+
+    public void assertElementPresent(SelenideElement element) {
+        //sleep(4000); if we need to wait element
+        boolean isVisible = element.isDisplayed();
+        assertTrue(isVisible);
     }
 }
