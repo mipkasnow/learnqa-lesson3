@@ -5,6 +5,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.remote.AutomationName;
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
@@ -37,6 +38,7 @@ public class MyAppiumDriver implements WebDriverProvider {
         options.setAppPackage("org.wikipedia");
         options.setAppActivity(".main.MainActivity");
         options.setNoReset(false);
+        options.setOrientation(ScreenOrientation.PORTRAIT);
 
         DriverStaticContainer.driver = new AndroidDriver(getAppiumServerUrl(), options);
         return driver;
